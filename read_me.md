@@ -388,10 +388,14 @@ We can use a __asterisk(*)__ to show all the collumns.
 
 Lets fetch data from Mock1 table.
 
-* We'll see all the column by using a   __(*)__.
+We'll see all the column by using a   __(*)__.
+
 ![sel](https://user-images.githubusercontent.com/69482271/90520935-c6309d80-e18b-11ea-8bb0-9ffabdcd8439.png)
 
-* We can specify tables. In this case we only see 3 columns(id,first_name,last_name).
+
+We can specify tables. In this case we only see 3 columns(id,first_name,last_name).
+
+
 ![sel1](https://user-images.githubusercontent.com/69482271/90520942-c7fa6100-e18b-11ea-8cb4-73e765b87c33.png)
 
 ## Order by(Sort):
@@ -436,8 +440,11 @@ Coomand:
     FROM table_name
     WHERE [condition]
 
+
 Lets see only the countries without using distinct:
+
 ![dis2](https://user-images.githubusercontent.com/69482271/90523175-64bdfe00-e18e-11ea-8bd4-0b37d585bd8a.PNG)
+
 
 Now if we use distinct then we can see the duplicate data will be removed.
 
