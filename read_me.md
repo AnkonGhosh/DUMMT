@@ -13,6 +13,7 @@ PostgreSQL, also known as Postgres, is a free and open-source relational databas
 ---
     * Dowload Process
     * Installation Process
+    * Start PSQL with CMP/PSQL Shell
 
 
 
@@ -114,7 +115,29 @@ __Step 10:__ To launch Postgre go to Start Menu and search pgAdmin 4. And use it
 ![markdown logo](![setup10](https://user-images.githubusercontent.com/69482271/90493808-a3d75980-e164-11ea-8840-d52f936b92e9.png)
 
 
+#  Start PSQL with CMP/PSQL Shell
+---
+__Step 1:__ Open command prompt or psql shell.
 
+![markdown logo](![cmd](https://user-images.githubusercontent.com/69482271/90497627-1b0eec80-e169-11ea-84b4-91f858f2c110.png)
+
+__Step 2:__ After opening you will see something like this.
+
+![markdown logo](![cmd1](https://user-images.githubusercontent.com/69482271/90497950-835dce00-e169-11ea-9886-510fa3205cd5.png)
+
+__Step 3:__  Now type __psql__ here ans press enter.
+
+![markdown logo](![cmd2](https://user-images.githubusercontent.com/69482271/90498519-4219ee00-e16a-11ea-8cea-d44b49cc2d7e.png)
+
+__Step 4:__ Then CMD will seek the password you set at the time of installation. Type this password.(You can't see the pass when you are typing.Just type the correct password and press enter.)
+
+![markdown logo](![cmd3](https://user-images.githubusercontent.com/69482271/90498814-99b85980-e16a-11ea-85db-1dc839da8430.png)
+
+__Step 5:__ After entering correct password you'll see something like this.
+
+![markdown logo](![cmd4](https://user-images.githubusercontent.com/69482271/90499007-d1bf9c80-e16a-11ea-8191-cf7a1d0d8c68.png)
+
+It means you are ready to use.
 
 
 
