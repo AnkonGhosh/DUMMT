@@ -560,8 +560,295 @@ Suppose we want all the entity with email starting with a letter _a_.
 
 The ILIKE operator do the same as like except Ilike is case insensative. Means, '%a%' and '%A%' are not same for like but both are same for Ilike.
 
+## Group by
+---
+The PostgreSQL GROUP BY clause is used in collaboration with the SELECT statement to group together those rows in a table that have identical data. This is done to eliminate redundancy in the output and/or compute aggregates that apply to these groups.
 
+Command:
+
+    SELECT column-list
+    FROM table_name
+    WHERE [ conditions ]
+    GROUP BY column1, column2....columnN
+
+Suppose we want to know the number of time each country appears in the birth_country collumn.
+
+![group](https://user-images.githubusercontent.com/69482271/90538288-2e897a00-e1a0-11ea-8571-c5f930dbbb97.png)
+
+## Having Clause
+---
+The HAVING clause allows us to pick out particular rows where the function's result meets some condition.
+
+The WHERE clause places conditions on the selected columns, whereas the HAVING clause places conditions on groups created by the GROUP BY clause.
+
+Suppose we want to know wich countries are in birth_country collumn more than 19 times. Then we have to use __having__ clause.
+
+![having](https://user-images.githubusercontent.com/69482271/90538302-30ebd400-e1a0-11ea-8087-5d2a6d0405eb.png)
+
+__N.B__ We have to keep in mind that __having__ clause is used under __group by__ clause.
+
+
+---
+---
+---
+For the next few topic we need another table. So lets create a table named __Car__ using mockaroo And insert it into the database.
+
+![car](https://user-images.githubusercontent.com/69482271/90541524-9a6de180-e1a4-11ea-9512-58f0d7fdd734.png)
+
+
+![car2](https://user-images.githubusercontent.com/69482271/90541538-9fcb2c00-e1a4-11ea-8c96-5d2adcddee11.png)
+
+
+---
+---
+---
+## Aggregate Function
+---
+Aggregate functions perform a calculation on a set of rows and return a single row. Mainly it is a mathematical function.PostgreSQL provides all standard SQL’s aggregate functions as follows:
+
+* Avg()- Calculate average value.
+* Sum()- Calculate sum of elements.
+* Min()- Calculate the minimum value.
+* Max()- Calculate the maximum value.
+* Count() - Count the number of elements.
+
+__AVG():__ We want know the average price of all car in __car__ table.
+
+![avg](https://user-images.githubusercontent.com/69482271/90542114-7232b280-e1a5-11ea-97f2-3ed5ec0f8e67.PNG)
+
+__MIN():__ 
+We want know the minimum price of all car in __car__ table.
+
+![min](https://user-images.githubusercontent.com/69482271/90542218-92627180-e1a5-11ea-93b2-014dc838f702.PNG)
+
+__MAX():__ We want know the maximum price of all car in __car__ table.
+
+![max](https://user-images.githubusercontent.com/69482271/90542228-94c4cb80-e1a5-11ea-8032-952e7b0bc170.PNG)
+
+__SUM():__ 
+ We want know the maximum price of all car in __car__ table.
+
+
+![sum](https://user-images.githubusercontent.com/69482271/90542327-bf168900-e1a5-11ea-9471-f0408777c28f.PNG)
+
+__Round()__ It will return a non-fraction number. It will trancate the portion after the decimal point.
+
+Average Price after using round():
+
+![roun](https://user-images.githubusercontent.com/69482271/90542555-1f0d2f80-e1a6-11ea-9719-7a280759e529.PNG)
+
+Sum Price after using round():
+
+![roun1](https://user-images.githubusercontent.com/69482271/90542566-22082000-e1a6-11ea-991c-7dfce04481b4.PNG)
+
+## Alias
+---
+Sometimes when we use aggregate function the column name in console remains empty.Moreover we have show the column name different from the real one sometimes. To do that, we use __as__.
+
+![roun1](https://user-images.githubusercontent.com/69482271/90542566-22082000-e1a6-11ea-991c-7dfce04481b4.PNG)
+
+Here __sum_price__ is the name which will be shown in console.
+
+## Timestamps and Date
+---
+We have to use __timestamp__ or __date__ on various occations.
+There is a function called __NOW()__ which automatically generates timestamp(date,time,timezone).
     
+    SELECT NOW();
+
+__NOW()__
+
+
+![time](https://user-images.githubusercontent.com/69482271/90543550-b1fa9980-e1a7-11ea-8a99-5c939f91ea0f.PNG)
+
+We can see ar forst there are DATE(yyyy-mm-day). Then there is time(hh-mm-ss-ms) and then there is timezone.
+
+__NOW()::DATE__
+
+If we want to know the date only we have to use this.
+
+![time1](https://user-images.githubusercontent.com/69482271/90543568-b757e400-e1a7-11ea-8695-5e7e4dcbefb9.PNG)
+
+__NOE()::TIME__
+
+To kneo the time only we have to use this command.
+
+![time2](https://user-images.githubusercontent.com/69482271/90543570-b7f07a80-e1a7-11ea-8f31-db28d6a7e544.PNG)
+
+## Age Function
+---
+
+If we want to know the __AGE__ we use the __AGE FUNCTION__.
+
+Command:
+
+    SELECT AGE(NOW(),BIRTH_DAY/CURRENT_DATE) 
+    FROM TABLE_NAME WHERE[COLMN1...]
+
+Ex.
+
+For a specific data:
+
+![age](https://user-images.githubusercontent.com/69482271/90544555-1538fb80-e1a9-11ea-9a81-466784d2a1b3.PNG)
+
+For full table:
+
+![age1](https://user-images.githubusercontent.com/69482271/90544560-1833ec00-e1a9-11ea-9495-138b622644dc.PNG)
+
+## Primary Key
+---
+The PRIMARY KEY constraint uniquely identifies each record in a table.
+
+Primary keys must contain UNIQUE values, and cannot contain NULL values.
+
+A table can have only ONE primary key; and in the table, this primary key can consist of single or multiple columns (fields).
+
+__ADD PRIMARY KEY:__
+ Suppose we have a table which doesnot have any __primary key__. We have to add a primary key there.
+
+ Command:
+
+    ALTER TABLE TABLE_NAME
+    ADD PRIMARY KEY(COLUMN1,COLUMN2....);
+
+Suppose we we want to add a primary key in __mock1 table.(I have deleted the previous primary key).
+
+![ap](https://user-images.githubusercontent.com/69482271/90545748-efacf180-e1aa-11ea-8e5f-a94b6289163c.PNG)
+
+__DROP PRIMARY KEY__
+
+Now we'll see how to delete a primary key from a table.To delete the primary key we have to follow 2 steps.
+
+__Step 1:__ At first we have to know the name of primary key constraint set by our table automatically.To do this we have to use  __\d__ systax.
+
+Command:
+
+    \d table_name;
+
+![dtp](https://user-images.githubusercontent.com/69482271/90546276-a4dfa980-e1ab-11ea-9bce-cb6deaf58ede.PNG)
+
+We can see the name of our primary key constraint is __mock1_pkey__.
+
+__Step 2:__
+Now we can delete the primary key using this command.
+
+Command:
+
+    ALTER TABLE TABLE_NAME 
+    DROP CONSTRAINTS primary_key_constraint;
+
+![dp](https://user-images.githubusercontent.com/69482271/90545771-f76c9600-e1aa-11ea-8b95-69196f0606a2.PNG)
+
+
+## DELETE ENTITY FROM TABLE
+---
+Sometimes we have to delete the redundant data from a table. To do this we'll follow this command.
+
+Command:
+
+    DELETE FROM TABLE_NAME 
+    WHERE[COL1,COL2,....];
+
+Suppose we want to delete a data with id=1000.
+
+
+![dlt](https://user-images.githubusercontent.com/69482271/90546761-57177100-e1ac-11ea-97d7-ec94626960eb.PNG)
+
+## UNIQUE
+---
+The UNIQUE constraint ensures that all values in a column are different.
+
+Both the UNIQUE and PRIMARY KEY constraints provide a guarantee for uniqueness for a column or set of columns.
+
+A PRIMARY KEY constraint automatically has a UNIQUE constraint.
+
+However, you can have many UNIQUE constraints per table, but only one PRIMARY KEY constraint per table.
+
+__ADD UNIQUE CONSTRAINT__:
+Suppose we have a table which doesnot have any __Unique constraint collumn__ except primary key. We have to add a unique collumn there.
+
+ Command:
+
+    ALTER TABLE TABLE_NAME
+    ADD UNIQUE(COLUMN1,COLUMN2....);
+
+Suppose we we want to add unique constraint in __mock1__ table in __email__ column .
+
+![unq](https://user-images.githubusercontent.com/69482271/90547842-e7a28100-e1ad-11ea-8bae-c902e4ee774e.PNG)
+
+See, Email column is now unique.
+
+__DROP UNIQUE__
+
+Now we'll see how to delete a unique constraint from a table.To delete the primary key we have to follow 2 steps.
+
+__Step 1:__ At first we have to know the name of unique constraint key set by our table automatically.To do this we have to use  __\d__ systax.
+
+Command:
+
+    \d table_name;
+
+![unq1](https://user-images.githubusercontent.com/69482271/90547855-ecffcb80-e1ad-11ea-9f0d-bf62cb1ec465.PNG)
+
+We can see the name of our primary key constraint is __mock1_email_key__.
+
+__Step 2:__
+Now we can delete the primary key using this command.
+
+Command:
+
+    ALTER TABLE TABLE_NAME 
+    DROP CONSTRAINTS unique_key_constraint;
+
+![unq2](https://user-images.githubusercontent.com/69482271/90547862-eec98f00-e1ad-11ea-9e85-da6e57053876.PNG)
+
+Thus we successfully remove unique constraint from email column.
+
+## CHECK CONSTRAINT
+---
+The CHECK constraint is used to limit the value range that can be placed in a column.
+
+If you define a CHECK constraint on a single column it allows only certain values for this column.
+
+If you define a CHECK constraint on a table it can limit the values in certain columns based on values in other columns in the row.
+
+Command:
+
+    ALTER TABLE TABLE_NAME 
+    ADD CHECK(COL1 CONSTRAINT,COL2 CONSTRAINT...)
+
+Suppose we want to keep cars only which price is greater than 15000. To do so we can use check constraint. But we have to be careful because once this is done there is no way we can have the deleted data back.
+
+![ckh](https://user-images.githubusercontent.com/69482271/90549505-70222100-e1b0-11ea-9fe0-69185d17e69d.PNG)
+
+Now we'll  check how many cars are there with price <=1500.
+
+![chk1](https://user-images.githubusercontent.com/69482271/90549514-731d1180-e1b0-11ea-95d8-f4f6151924e4.PNG)
+
+its 0. So it can be said that our constraint works perfectly.
+
+## UPDATE
+---
+The UPDATE statement is used to modify the existing records in a table.
+
+Command:
+
+    UPDATE table_name
+    SET column1 = value1, column2 = value2, ...
+    WHERE condition;
+
+Note: Be careful when updating records in a table! Notice the WHERE clause in the UPDATE statement. The WHERE clause specifies which record(s) that should be updated. If you omit the WHERE clause, all records in the table will be updated!
+
+Suppose we want to update the first_name and last_name of entity with id==1 from __mock1__ table.
+
+![up](https://user-images.githubusercontent.com/69482271/90550219-72d14600-e1b1-11ea-8ebe-0ec137d31a4c.PNG)
+
+Now lets check the entity with id=1.
+
+![up1](https://user-images.githubusercontent.com/69482271/90550224-7533a000-e1b1-11ea-81d4-4a71ed955fbb.PNG)
+
+Updated Successfully!
+
 
 
 
