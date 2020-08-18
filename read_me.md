@@ -1,2 +1,3 @@
 # PostgreSQL
-PostgreSQL, also known as Postgres, is a free and open-source relational database management system emphasizing extensibility and SQL compliance.
+![alt text](https://github.com/AnkonGhosh/POSTGRE/blob/master/Image/Capture.PNG)
+PostgreSQL, also known as Postgres, is a free and open-source relational database management system emphasizing extensibility and SQL compliance.PostgreSQL is a powerful, open source object-relational database system with over 30 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.
