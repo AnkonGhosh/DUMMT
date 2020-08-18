@@ -11,6 +11,7 @@ PostgreSQL, also known as Postgres, is a free and open-source relational databas
 
 # Content
 ---
+
     * Dowload Process.
     * Installation Process.
     * Start PSQL with CMP/PSQL Shell.
@@ -290,7 +291,7 @@ Command:
      column3 datatype  constraints(optinal),
      .....
      columnN datatype  constraints(optinal),
-);
+    );
 
 Now I am creating __mock1__ again with constraints.
 
@@ -301,6 +302,259 @@ Let's Describe this table now and see what it looks like now:
 ![dtc](https://user-images.githubusercontent.com/69482271/90509215-c83e3080-e17a-11ea-967c-ae321ef87960.png)
 
 If you take a close look then you can see there are __not null__ indicating the value of this column can not be null. And also there is __mock1_pkey__ as primary key.
+
+## Insert Into Table:
+Now we'll see how to insert a entity or row in a table. It is obvious that without insert data there is nothing we can do.
+
+Command:
+
+    INSERT INTO TABLE_NAME (column1, column2, column3,...columnN)
+    VALUES (value1, value2, value3,...valueN);
+
+Explanation:
+
+* Here, column1, column2,...columnN are the names of the columns in the table into which you want to insert data.
+* The target column names can be listed in any order. The values supplied by the VALUES clause or query are associated with the explicit or implicit column list left-to-right.
+
+Now lets see how it looks to insert into mock1.
+
+![it](https://user-images.githubusercontent.com/69482271/90516669-26bcdc00-e186-11ea-92ee-04ec6a9bf8f9.png)
+
+If insertion is successful then the message given below will be shown:
+
+![itr](https://user-images.githubusercontent.com/69482271/90516772-494ef500-e186-11ea-90a2-d4ae73db8ded.png)
+
+
+## Generate rows using MOCKAROO
+---
+Using [Mockaroo](https://www.postgresql.org/download/ "Mockaroo")  we can generate upto 1000 rows at a time.  At first visit the given link.
+
+__Step 1:__ Create the columns and specify the data types.There are all available option to do this.
+
+![mro](https://user-images.githubusercontent.com/69482271/90516808-58ce3e00-e186-11ea-9335-6b256becac75.png)
+
+__Step 2:__ 
+
+* Change the file format to SQL.
+* mark the __include create table__ box.
+* Download.
+
+![mro1](https://user-images.githubusercontent.com/69482271/90516892-769ba300-e186-11ea-9b75-0e411d40f5db.png)
+
+__Step 3:__ Now we have to add constraints. To do this I have used VSCODE.
+
+* Open the file with VSCODE.
+* Change the necessary things and add constraints.
+* save.
+
+Two pictures are given below:
+
+* without adding constraints and without any change.
+
+![vsc](https://user-images.githubusercontent.com/69482271/90518113-23c2eb00-e188-11ea-8bfa-3f36f7cd8baa.png)
+
+* with necessary change.
+
+![VSC1](https://user-images.githubusercontent.com/69482271/90518123-26bddb80-e188-11ea-9563-d3e6414405cc.PNG)
+
+Now we have insert this table.There is a nice way to do this. At first lets do somethig.
+
+Type this command:
+ 
+    \?
+
+![see](https://user-images.githubusercontent.com/69482271/90518727-f6c30800-e188-11ea-988f-4419197a27da.PNG)
+
+Here we can see __\i__ command. By using this we can easily add the table in database.
+
+Command:
+
+    \i path_of_the_file;
+
+![ict](https://user-images.githubusercontent.com/69482271/90520056-ac428b00-e18a-11ea-9f88-f7642bfbe394.png)
+
+
+Thus we can easily make table.
+
+## SELECT
+---
+
+PostgreSQL SELECT statement is used to fetch the data from a database table, which returns data in the form of result table. These result tables are called result-sets.
+
+Command:
+     
+     SELECT column1, column2, columnN FROM table_name;
+We can use a __asterisk(*)__ to show all the collumns.
+
+Lets fetch data from Mock1 table.
+
+* We'll see all the column by using a   __(*)__.
+![sel](https://user-images.githubusercontent.com/69482271/90520935-c6309d80-e18b-11ea-8bb0-9ffabdcd8439.png)
+
+* We can specify tables. In this case we only see 3 columns(id,first_name,last_name).
+![sel1](https://user-images.githubusercontent.com/69482271/90520942-c7fa6100-e18b-11ea-8cb4-73e765b87c33.png)
+
+## Order by(Sort):
+---
+Sometimes it is need to rearrage the table in accending or decending order in respect of a column or multiple columns. To do so we can use __order by__.
+
+Command:
+
+    SELECT column-list
+    FROM table_name
+    [WHERE condition](OPTONAL)
+    [ORDER BY column1, column2, .. columnN] [ASC | DESC];
+
+We can rearrange the table both in accending and decending order.
+
+__Accending Order:__ To rearrange the table in accending order we use __ASC__ or __nothing at all__ after __ORDER BY__.
+
+1. Order by id:
+![ord](https://user-images.githubusercontent.com/69482271/90521993-03495f80-e18d-11ea-9958-b8bd9abf020d.png)
+
+1. Order by first_name:
+![ord](https://user-images.githubusercontent.com/69482271/90522148-30960d80-e18d-11ea-8443-03e64a13d4af.png)
+
+__Decending order:__
+To rearrange the table in accending order we use __DESC__ after __ORDER BY__.
+
+1. Order by id:
+![ord2](https://user-images.githubusercontent.com/69482271/90522411-7d79e400-e18d-11ea-8972-48562f7d6c8e.png)
+
+1. Order by first_name:
+![ord3](https://user-images.githubusercontent.com/69482271/90522419-7fdc3e00-e18d-11ea-9511-d9f84248821b.png)
+
+## Dintict:
+---
+The PostgreSQL DISTINCT keyword is used in conjunction with SELECT statement to eliminate all the duplicate records and fetching only unique records.
+
+There may be a situation when you have multiple duplicate records in a table. While fetching such records, it makes more sense to fetch only unique records instead of fetching duplicate records.
+
+Coomand:
+
+    SELECT DISTINCT column1, column2,.....columnN
+    FROM table_name
+    WHERE [condition]
+
+Lets see only the countries without using distinct:
+![dis2](https://user-images.githubusercontent.com/69482271/90523175-64bdfe00-e18e-11ea-8bd4-0b37d585bd8a.PNG)
+
+Now if we use distinct then we can see the duplicate data will be removed.
+
+![dis](https://user-images.githubusercontent.com/69482271/90523158-625ba400-e18e-11ea-909d-63d75cf145fe.png)
+
+## Where Clause
+---
+
+The PostgreSQL WHERE clause is used to specify a condition while fetching the data from single table or joining with multiple tables.
+
+If the given condition is satisfied, only then it returns specific value from the table.
+
+Command:
+
+    SELECT column1, column2, columnN
+    FROM table_name
+    WHERE [search_condition];
+
+Lets find out the details of this person who has a id=101.
+
+![whe](https://user-images.githubusercontent.com/69482271/90523784-1b21e300-e18f-11ea-8591-5df577fa5b36.png)
+
+Now suppose we know the first name to find the entity.
+
+![whe1](https://user-images.githubusercontent.com/69482271/90523793-1c531000-e18f-11ea-82fa-3d2a5678c511.png)
+
+N.B. If we use primary key as condition then we always get 1 entity. But otherwise it is possible to get multiple rows.
+
+## Limit, Offset and Fetch
+---
+__Limit:__ By using limit we can tell how many rows we want from the starting. Suppose we wan't to know the details of the first X rows.Then we should use limit.
+
+Command:
+
+    SELECT COL1,COL2..COLN FROM TABLE_NAME LIMIT X;
+
+Lets see the first 10 rows of mock1.
+
+![limit](https://user-images.githubusercontent.com/69482271/90524664-29243380-e190-11ea-8b1a-04293c43bf01.PNG)
+
+__Offset:__ If we want to ignore the first X rows and start to know the detail after the Xth row, Then we use offset.
+
+Command:
+
+    SELECT COL1,COL2..COLN FROM TABLE_NAME OFFSET X;
+
+Suppose we want to know the 11th to 20th row.
+
+![offset](https://user-images.githubusercontent.com/69482271/90524675-2cb7ba80-e190-11ea-8777-5c19df69d345.PNG)
+
+__Fetch__: Constrains the maximum number of rows returned by a statement or subquery. Both LIMIT (Postgres syntax) and FETCH (ANSI syntax) are supported, and produce the same result.
+
+Command:
+
+    SELECT COL1,COL2..COLN FROM TABLE_NAME FETCH FIRST X ROWS ONLY;
+
+![fetch](https://user-images.githubusercontent.com/69482271/90524689-304b4180-e190-11ea-9738-2eb74bd85e70.PNG)
+
+## Between
+---
+The BETWEEN operator selects values within a given range. The values can be numbers, text, or dates.
+
+The BETWEEN operator is inclusive: begin and end values are included. 
+
+Command:
+
+    SELECT column_name(s)
+    FROM table_name
+    WHERE column_name BETWEEN value1 AND value2;
+
+If we want to see the data between id 100 and 110.
+
+![bet](https://user-images.githubusercontent.com/69482271/90526756-989b2280-e192-11ea-9249-8b627c975bbd.png)
+
+## In Operator
+---
+The IN operator allows you to specify multiple values in a WHERE clause.
+
+The IN operator is a shorthand for multiple OR conditions.
+
+Command:
+
+    SELECT column_name(s)
+    FROM table_name
+    WHERE column_name IN (value1, value2, ...);
+
+Suppose we want to know the entity which birth_country is either __Bangladesh__ or __Australia__ or __Nigeria__.
+
+![in](https://user-images.githubusercontent.com/69482271/90527278-2ecf4880-e193-11ea-90ce-9b25aab8dc27.PNG)
+
+## Like and Ilike
+---
+The PostgreSQL LIKE operator is used to match text values against a pattern using wildcards.
+
+![wild](https://user-images.githubusercontent.com/69482271/90527858-d482b780-e193-11ea-82fc-9f10988f027d.png)
+
+ If the search expression can be matched to the pattern expression, the LIKE operator will return true, which is 1.
+
+There are two wildcards used in conjunction with the LIKE operator −
+
+1. The percent sign (%)
+
+1. The underscore (_)
+
+The percent sign represents zero, one, or multiple numbers or characters. The underscore represents a single number or character. These symbols can be used in combinations.
+
+    SELECT FROM table_name
+    WHERE column LIKE 'Desired Expression';
+
+Suppose we want all the entity with email starting with a letter _a_.
+
+![like](https://user-images.githubusercontent.com/69482271/90528377-5bd02b00-e194-11ea-97fc-e5bd33496146.png)
+
+The ILIKE operator do the same as like except Ilike is case insensative. Means, '%a%' and '%A%' are not same for like but both are same for Ilike.
+
+
+    
 
 
 
