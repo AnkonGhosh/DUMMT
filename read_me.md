@@ -428,13 +428,13 @@ To rearrange the table in accending order we use __DESC__ after __ORDER BY__.
 1. Order by first_name:
 ![ord3](https://user-images.githubusercontent.com/69482271/90522419-7fdc3e00-e18d-11ea-9511-d9f84248821b.png)
 
-## Dintict:
+## Distinct:
 ---
 The PostgreSQL DISTINCT keyword is used in conjunction with SELECT statement to eliminate all the duplicate records and fetching only unique records.
 
 There may be a situation when you have multiple duplicate records in a table. While fetching such records, it makes more sense to fetch only unique records instead of fetching duplicate records.
 
-Coomand:
+Command:
 
     SELECT DISTINCT column1, column2,.....columnN
     FROM table_name
@@ -671,7 +671,7 @@ If we want to know the date only we have to use this.
 
 __NOE()::TIME__
 
-To kneo the time only we have to use this command.
+To know the time only we have to use this command.
 
 ![time2](https://user-images.githubusercontent.com/69482271/90543570-b7f07a80-e1a7-11ea-8f31-db28d6a7e544.PNG)
 
